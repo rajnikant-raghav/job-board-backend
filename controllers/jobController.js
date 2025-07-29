@@ -23,14 +23,23 @@ exports.getJobById = async (req, res) => {
 
 // Create a new job
 exports.createJob = async (req, res) => {
-  const { title, company, type, location, description } = req.body;
+  const { title, company, type, location, description, salary, skills, education } = req.body;
 
-  if (!title || !company || !type || !location || !description) {
+  if (!title || !company || !type || !location || !description || !salary || !skills || !education) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
   try {
-    const newJob = new Job({ title, company, type, location, description });
+    const newJob = new Job({ 
+      title, 
+      company, 
+      type, 
+      location, 
+      description, 
+      salary, 
+      skills, 
+      education 
+    });
     await newJob.save();
     res.status(201).json(newJob);
   } catch (err) {
