@@ -8,7 +8,7 @@ const jobSchema = new mongoose.Schema({
   description: { type: String, required: true },
   skills: { type: String, required: true },
   education: { type: String, required: true },
-  salary: { type: Number, required: true },
+  salary: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
 });
 
